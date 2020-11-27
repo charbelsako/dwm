@@ -15,8 +15,8 @@ static const unsigned int gappov    = 10;       /* vert outer gap between window
 static const int smartgaps          = 0;        /* 1 means no outer gap when there is only one window */
 static const int showbar            = 1;        /* 0 means no bar */
 static const int topbar             = 1;        /* 0 means bottom bar */
-static const char *fonts[]          = { /*"monospace:size=10",*/ "Font Awesome:size=10", "Symbola:size=10" };
-static const char dmenufont[]       = "monospace:size=10";
+static const char *fonts[]          = { /*"monospace:size=10",*/ "Font Awesome:size=10","Symbola:size=10" };
+static const char dmenufont[]       = "FontAwesome:size=10";
 static const char col_gray1[]       = "#222222";
 static const char col_gray2[]       = "#444444";
 static const char col_gray3[]       = "#bbbbbb";
@@ -29,7 +29,7 @@ static const char *colors[][3]      = {
 };
 
 /* tagging */
-static const char *tags[] = { "", "2", "3", "4", "5", "6", "7", "8", "" };
+static const char *tags[] = { "", "", "", "", "5", "6", "7", "8", "" };
 
 static const Rule rules[] = {
 	/* xprop(1):
@@ -39,7 +39,7 @@ static const Rule rules[] = {
 	/* class      instance    title       tags mask     isfloating   monitor */
 	{ "Gimp",     NULL,       NULL,       0,            1,           -1 },
 	{ "Firefox",  NULL,       NULL,       1 << 8,       0,           -1 },
-	{ "mpv",  NULL,	  	  NULL,	      1 << 1,	    0,		 -1}	 
+	{ "mpv",  NULL,	  	  NULL,	      6,	    0,		 -1}	 
 };
 
 /* layout(s) */
@@ -73,16 +73,14 @@ static const Layout layouts[] = {
 /* commands */
 static char dmenumon[2] = "0"; /* component of dmenucmd, manipulated in spawn() */
 static const char *dmenucmd[] = { "dmenu_run", "-m", dmenumon, "-fn", dmenufont, "-nb", col_gray1, "-nf", col_gray3, "-sb", col_cyan, "-sf", col_gray4, NULL };
-static const char *rofi[] = { "rofi", "-show", "run",  NULL };
 static const char *termcmd[]  = { "st", NULL };
-static const char *lock[] = {"lock.sh", NULL};
 static const char *firefox[] = {"firefox"};
 
 static Key keys[] = {
 	/* modifier                     key        function        argument */
 	{ MODKEY,			XK_w,	   spawn, 	   {.v = firefox } },
-	{ MODKEY,                       XK_p,      spawn,          {.v = rofi } },
-	{ MODKEY|ShiftMask, 		XK_x, 	   spawn,	   { .v = lock } },
+	{ MODKEY,                       XK_p,      spawn,          {.v = dmenucmd} },
+	{ MODKEY|ShiftMask, 		XK_x, 	   spawn,	   SHCMD("lock_single") },
 	{ MODKEY,             XK_Return, spawn,          {.v = termcmd } },
 	{ MODKEY,                       XK_b,      togglebar,      {0} },
 	{ MODKEY,                       XK_j,      focusstack,     {.i = +1 } },
@@ -159,3 +157,4 @@ static Button buttons[] = {
 	{ ClkTagBar,            MODKEY,         Button3,        toggletag,      {0} },
 };
 
+static const int EMPTY_WINDOW_COUNT = 2;

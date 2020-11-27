@@ -1456,7 +1456,7 @@ propertynotify(XEvent *e)
 void
 quit(const Arg *arg)
 {
-	running = 0;
+    running = 0;
 }
 
 Monitor *
