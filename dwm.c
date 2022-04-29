@@ -855,7 +855,7 @@ drawbar(Monitor *m)
 				ch = *s;
 				*s = '\0';
 				sw = TEXTW(text) - lrpad;
-				drw_text(drw, m->ww - statusw + x, 0, sw, bh, 0, text, 0);
+				drw_text(drw, m->ww - stw + x, 0, sw, bh, 0, text, 0);
 				x += sw;
 				*s = ch;
 				text = s + 1;
@@ -867,6 +867,7 @@ drawbar(Monitor *m)
 		
 		sw = TEXTW(stext) - lrpad / 2 + 2; /* 2px right padding */
 		drw_text(drw, m->ww - sw - stw, 0, sw, bh, lrpad / 2 - 2, stext, 0);
+		// sw = statusw;
 	}
 
 	resizebarwin(m);
