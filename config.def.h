@@ -76,7 +76,7 @@ static char dmenumon[2] = "0"; /* component of dmenucmd, manipulated in spawn() 
 static const char *dmenucmd[] = { "dmenu_run", "-m", dmenumon, "-fn", dmenufont, "-nb", col_gray1, "-nf", col_gray3, "-sb", col_cyan, "-sf", col_gray4, NULL };
 static const char *rofi[] = { "rofi", "-show", "run",  NULL };
 static const char *termcmd[]  = { "gnome-terminal", NULL };
-static const char *lock[] = {"lock.sh", NULL};
+static const char *lock[] = {"i3lockr", NULL};
 
 static Key keys[] = {
 	/* modifier                     key        function        argument */
