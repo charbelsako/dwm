@@ -504,8 +504,8 @@ buttonpress(XEvent *e)
 			arg.ui = 1 << i;
 		} else if (ev->x < x + blw)
 			click = ClkLtSymbol;
-		else if (ev->x > selmon->ww - statusw) {
-			x = selmon->ww - statusw;
+		else if (ev->x > selmon->ww - statusw - getsystraywidth()) {
+			x = selmon->ww - statusw - lrpad - getsystraywidth();
 			click = ClkStatusText;
 			statussig = 0;
 			for (text = s = stext; *s && x <= ev->x; s++) {
@@ -2441,7 +2441,7 @@ updatestatus(void)
 {
 	if (!gettextprop(root, XA_WM_NAME, stext, sizeof(stext))) {
 		strcpy(stext, "dwm-"VERSION);
-		statusw = TEXTW(stext) - lrpad + 2;
+		statusw = TEXTW(stext) - lrpad;
 	} else {
 		char *text, *s, ch;
 
@@ -2450,7 +2450,7 @@ updatestatus(void)
 			if ((unsigned char)(*s) < ' ') {
 				ch = *s;
 				*s = '\0';
-				statusw += TEXTW(text) - lrpad;
+				statusw += TEXTW(text) - lrpad + 2;
 				*s = ch;
 				text = s + 1;
 			}

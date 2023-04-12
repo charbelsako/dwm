@@ -80,6 +80,8 @@ static const char *lock[] = {"i3lockr", "--blur", 100, NULL};
 
 static Key keys[] = {
 	/* modifier                     key        function        argument */
+	{ MODKEY,			XK_F9,		spawn,		{.v = (const char*[]){ "mounter", NULL } } },
+	{ MODKEY,			XK_F10,		spawn,		{.v = (const char*[]){ "unmounter", NULL } } },
 	{ MODKEY,                       XK_p,      spawn,          {.v = rofi } },
 	{ MODKEY|ShiftMask, 		XK_x, 	   spawn,	   { .v = lock } },
 	{ MODKEY,             XK_Return, spawn,          {.v = termcmd } },

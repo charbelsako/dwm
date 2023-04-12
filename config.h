@@ -43,7 +43,6 @@ static const Rule rules[] = {
 	/* class      instance    title       tags mask     isfloating   monitor */
 	{ "Gimp",     NULL,       NULL,       0,            1,           -1 },
 	{ "Firefox",  NULL,       NULL,       1 << 8,       0,           -1 },
-	{ "mpv",  NULL,	  	  NULL,	      1 << 1,	    0,		 -1}	 
 };
 
 /* layout(s) */
@@ -90,6 +89,8 @@ static const char *ncmpcpp[] = {"st", "-e", "ncmpcpp"};
 
 static Key keys[] = {
 	/* modifier                     key        function        argument */
+	{ MODKEY,			XK_F9,		spawn,		{.v = (const char*[]){ "mounter", NULL } } },
+	{ MODKEY,			XK_F10,		spawn,		{.v = (const char*[]){ "unmounter", NULL } } },
   { 0,                          XF86XK_AudioMedia,  spawn,         SHCMD(TERMINAL "-e ncmpcpp" ) },
 	{ MODKEY,			                  XK_w,	     spawn, 	       {.v = firefox } },
 	{ MODKEY,                       XK_p,      spawn,          {.v = dmenucmd } },
